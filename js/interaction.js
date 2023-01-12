@@ -1,5 +1,6 @@
 let x = 0
 let y = 0
+let r
 let theta = 0
 let inc = 0.12
 let offset = 0 //the ammount offset from beginning of wave
@@ -22,7 +23,8 @@ function draw() {
 }
 
 function variableEllipse(x, y, px, py) {
-    let speed = abs(x-px) + abs(y - py)
+
+    // let speed = abs(x-px) + abs(y - py)
     let length = 5
     // stroke(speed, speed - 50, speed - 200)
     // fill(speed, speed - 100, speed - 50)
@@ -31,20 +33,26 @@ function variableEllipse(x, y, px, py) {
         // amplitude = sin(theta - offset) * (windowHeight/2)
         // amplitude = ((theta - offset)/maxAngle) * (windowHeight/2)
             for (i = length; i > 0; i --){
-                y = sin(theta - (i * 0.05)) * amplitude
+                r = height * 0.12
+                x = mouseX + (r * cos(theta))
+                y = mouseY + (r * sin(theta))
                 fill (255 - (255/length * i), 0, 0)
-                ellipse (mouseX, mouseY + y, 12)
+                // for(i = 0; i < 10; i ++){
+                ellipse (x, y, 12, 12)
+                // }
             }
             for (i = length; i > 0; i--){
-                y = cos(theta - (i * 0.05)) * amplitude
+                r = height * 0.1
+                x = mouseX + (r * cos(theta))
+                y = mouseY + (r * sin(theta))
                 fill(0, 0, 255 - (255/length * i))
-                ellipse(mouseX + y, mouseY, 12)
-                rotate(PI/5)
+                // for(i = 0; i < 10; i ++){ 
+                ellipse(x, y, 12, 12)
+                // }
             }
         theta += 0.1
         x = ((theta)) * windowWidth  
         }
         offset += inc
         theta = offset
-
 }
