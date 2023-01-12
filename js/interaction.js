@@ -12,8 +12,8 @@ function setup() {
     createCanvas(windowHeight, windowWidth)
     background(0)
 
-    amplitude = windowHeight * 0.4
-    frequency = windowWidth 
+    amplitude = windowHeight * 0.1
+    frequency = windowWidth * 6
     maxAngle = (windowWidth/frequency) * TAU
 }
 
@@ -33,26 +33,30 @@ function variableEllipse(x, y, px, py) {
         // amplitude = sin(theta - offset) * (windowHeight/2)
         // amplitude = ((theta - offset)/maxAngle) * (windowHeight/2)
             for (i = length; i > 0; i --){
+                y = mouseY + (cos(theta) * amplitude)
                 r = height * 0.12
-                x = mouseX + (r * cos(theta))
-                y = mouseY + (r * sin(theta))
+                x = mouseX + (r * sin(theta))
+                // y = mouseY + (r * sin(theta))
                 fill (255 - (255/length * i), 0, 0)
-                // for(i = 0; i < 10; i ++){
-                ellipse (x, y, 12, 12)
+                // for(i = 0; i < 10; i ++){ 
+                ellipse(x, y, 12, 12)
+                // rotate(PI/5)
                 // }
             }
             for (i = length; i > 0; i--){
-                r = height * 0.1
+                y = mouseY + (sin(theta) * amplitude)
+                r = height * 0.12
                 x = mouseX + (r * cos(theta))
-                y = mouseY + (r * sin(theta))
+                // y = mouseY + (r * sin(theta))
                 fill(0, 0, 255 - (255/length * i))
                 // for(i = 0; i < 10; i ++){ 
                 ellipse(x, y, 12, 12)
+                // rotate(PI/5)
                 // }
             }
         theta += 0.1
-        x = ((theta)) * windowWidth  
+        // x = ((theta)) * windowWidth  
         }
         offset += inc
-        theta = offset
+        // theta = offset
 }
