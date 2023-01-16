@@ -2,7 +2,7 @@
 let x = 0
 let y = 0
 let theta = 0
-let inc = 0.12
+let inc = 0.09
 let offset = 0 //the ammount offset from beginning of wave
 let amplitude
 let frequency

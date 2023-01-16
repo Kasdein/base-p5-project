@@ -20,7 +20,7 @@ function draw() {
 
     fill(0, 153, 0)
     background(0)
-    noStroke()
+    // noStroke()
     let length = 5
 
     while(theta < maxAngle + offset) {
@@ -35,9 +35,9 @@ function draw() {
             y = cos(theta - (i * 0.05)) * amplitude
             fill(100, 200, 255 - (255/length * i))
             ellipse(x, y + height*0.5, 12)
-        }
-    theta += 0.1
-    x = ((theta - offset)/maxAngle) * windowWidth  
+        } 
+        theta += 0.2
+        x = ((theta - offset)/maxAngle) * windowWidth 
     }
     offset += inc
     theta = offset

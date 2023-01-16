@@ -23,40 +23,22 @@ function draw() {
 }
 
 function variableEllipse(x, y, px, py) {
-
-    // let speed = abs(x-px) + abs(y - py)
     let length = 5
-    // stroke(speed, speed - 50, speed - 200)
-    // fill(speed, speed - 100, speed - 50)
-    // ellipse(x, y, speed, speed)
     while(theta < maxAngle + offset) {
-        // amplitude = sin(theta - offset) * (windowHeight/2)
-        // amplitude = ((theta - offset)/maxAngle) * (windowHeight/2)
             for (i = length; i > 0; i --){
-                y = mouseY + (cos(theta) * amplitude)
+                // y = mouseY + (cos(theta) * amplitude)
                 r = height * 0.12
-                x = mouseX + (r * sin(theta))
+                // x = mouseX + (r * sin(theta))
                 // y = mouseY + (r * sin(theta))
+                // fill (255 - (255/length * i), 0, 0)
+                // ellipse(x, y, 12, 12)
+                px = mouseX + (r * sin(theta))
+                py = mouseY + (r * cos(theta))
                 fill (255 - (255/length * i), 0, 0)
-                // for(i = 0; i < 10; i ++){ 
-                ellipse(x, y, 12, 12)
-                // rotate(PI/5)
-                // }
-            }
-            for (i = length; i > 0; i--){
-                y = mouseY + (sin(theta) * amplitude)
-                r = height * 0.12
-                x = mouseX + (r * cos(theta))
-                // y = mouseY + (r * sin(theta))
-                fill(0, 0, 255 - (255/length * i))
-                // for(i = 0; i < 10; i ++){ 
-                ellipse(x, y, 12, 12)
-                // rotate(PI/5)
-                // }
+                ellipse (px, py, 12, 12)
             }
         theta += 0.1
-        // x = ((theta)) * windowWidth  
+        x = ((theta)) * windowWidth  
         }
         offset += inc
-        // theta = offset
 }
