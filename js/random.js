@@ -4,13 +4,15 @@ function setup() {
     background(0);
   
     // translucent stroke using alpha value
-    stroke(255, 255, 50, 15);
+    stroke(255, 255, 50, 25);
   }
   
   function draw() {
     // draw two random chords each frame
+    if(mouseIsPressed){
     randomChord();
     randomChord();
+    }
   }
   
   function randomChord() {
