@@ -16,13 +16,13 @@ function setup() {
   function randomChord() {
     // find a random point on a circle
     let angle1 = random(0, 2 * PI);
-    let xpos1 = (mouseX + mouseY * cos(angle1)) * 0.25
-    let ypos1 = (mouseX - mouseY * sin(angle1)) * 0.25
+    let xpos1 = (mouseX + cos(angle1))
+    let ypos1 = ( mouseY + sin(angle1))
   
     // find another random point on the circle
     let angle2 = random(0, 2 * PI);
-    let xpos2 = (mouseX + mouseY * cos(angle1)) * 1.25
-    let ypos2 = (mouseX - mouseY * sin(angle1)) * 1.25
+    let xpos2 = (mouseX + (cos(angle1)* 55))
+    let ypos2 = (mouseY + (sin(angle1)* 55))
   
     // draw a line between them
     line(xpos1, ypos1, xpos2, ypos2);
