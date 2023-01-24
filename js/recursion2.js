@@ -1,23 +1,29 @@
-let brown1, brown2
+let brown1, brown2, slider
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
     angleMode(DEGREES)
     noLoop()
-    background(250)
+
     strokeJoin(ROUND)
     brown1 = color(93, 69, 20)
     brown2 = color(137, 75, 9)
+    slider = createSlider(25, 65, 45, 5)
+    slider.position(windowWidth - 250, windowHeight - 50)
+    slider.style("width", "200px")
+    slider.input(draw)
 }
 
 function draw() {    
+    background(250)
+    resetMatrix()
     translate(width * 0.5, height)
     branch(250)
 }
 
 function branch(l) {
-    let maxAngle = 45
-    strokeWeight(map(l, 20, 250, 1, 10))
+    let maxAngle = slider.value()
+    strokeWeight(map(l, 25, 125, 1, 10))
     stroke(lerpColor(brown1, brown2, random(0, 1)))
     line(0,0,0,-l)
     translate(0, -l)
@@ -36,9 +42,10 @@ function branch(l) {
             // triangle(- size * 0.5, 0, size*0.5, 0, 0 , -size*0.5)
             // triangle(10, - size * 0.5, 10, size*0.5, -size*0.5 , 10)
 
+            
             beginShape()
-            fill(r, g, b, 200)
-            let radius = random (10, 30)
+            fill(r, g, b, 225)
+            let radius = random (12, 30)
             for(let i = 55; i < 185; i++){
                 let x = radius * cos(i)
                 let y = radius * sin(i)
@@ -53,8 +60,8 @@ function branch(l) {
             endShape(CLOSE)
             beginShape()
             fill(r2, g2, b2, 200)
-            radius = random (1, 10)
-            for(let i = 5; i < 180; i++){
+            radius = random (1, 8)
+            for(let i = 1; i < 180; i++){
                 let x = radius * cos(i)
                 let y = radius * sin(i)
 
@@ -62,7 +69,7 @@ function branch(l) {
                 translate(- x, -y)
                 vertex(x, y)
             }
-            for (let i = 180; i > 5; i--){
+            for (let i = 180; i > 1; i--){
                 let x = radius * cos(i)
                 let y = radius * sin(-i)
                 vertex(x, y)
@@ -77,12 +84,12 @@ function branch(l) {
         // branch 2
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.5)
+        branch(l * 0.7)
         pop()
         //branch 3
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.67)
+        branch(l * 0.5)
         pop()
         //branch 4
         push()
