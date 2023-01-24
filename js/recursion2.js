@@ -6,9 +6,8 @@ let red1
 function setup() {
     createCanvas(windowWidth, windowHeight)
     angleMode(DEGREES)
-    // noLoop()
-    // frameRate(60)
-
+    noLoop()
+    frameRate(10)
     strokeJoin(ROUND)
 
     brown1 = color(93, 69, 20)
@@ -19,7 +18,7 @@ function setup() {
     yellow2 = color(234, 189, 81)
     red1 = color(247, 113, 56)
 
-    slider = createSlider(10, 80, 45, 1)
+    slider = createSlider(15, 60, 25, 5)
     slider.position(windowWidth - 250, windowHeight - 50)
     slider.style("width", "200px")
     slider.input(draw)
@@ -145,11 +144,10 @@ function branch(l) {
             //leaves
             noStroke()
             fill(lerpColor(yellow1, red1, random(0, 1)), 75)
-            ellipse(0, 0, 2, 20)
-            ellipse(0, 0, 20, 2)
-            rotate(45)
-            ellipse(0, 0, 2, 20)
-            ellipse(0, 0, 20, 2)
+            // triangle(0, 10, 0, -25, -20, 500)
+            triangle(500, -20, -25, 0, 10, 0)
+            triangle(-500, 20, 25, 0, -10, 0)
+            
         } else {
         //branch 1
         push()
