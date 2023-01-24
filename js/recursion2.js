@@ -31,81 +31,48 @@ function draw() {
 
 function branch(l) {
     let maxAngle = slider.value()
-    strokeWeight(map(l, 50, 175, 0.1, 15))
-    stroke(lerpColor(yellow1, yellow2, random(0, 1)))
+    strokeWeight(map(l, 20, 250, 1, 10))
+    // stroke(lerpColor(yellow1, yellow2, random(0, 1)))
+    stroke(0, 0, 0, 0)
     line(0,0,0,-l)
     translate(0, -l)
     if(l > 10) {
         if(l < 65) {
             //leaves
-            let r = 40 + random(-20, 20)
-            let g = 140 + random(-20, 20)
-            let b = 40 + random(-20, 20)
-            let r2 = 40 + random(-20, 20)
-            let g2 = 180 + random(-20, 20)
-            let b2 = 240 + random(-20, 20)
-            // let size = random(10, 25)
+            let r = random(0,255)
+            let g = random(0,255)
+            let b = random(0, 255)
             noStroke()
-            fill(r, g, b, 225)
-            ellipse(0, 0, 8, 85)
-            // triangle(size * 0.5, 0, -size * 0.5, 0, 0, size * 0.5)
-            // triangle(- size * 0.5, 0, size*0.5, 0, 0 , -size*0.5)
-            // triangle(10, - size * 0.5, 10, size*0.5, -size*0.5 , 10)
-
-            
-            // beginShape()
-
-            // let radius = random (12, 30)
-            // for(let i = 55; i < 185; i++){
-            //     let x = radius * cos(i)
-            //     let y = radius * sin(i)
-            //     // rotate(random(maxAngle, -maxAngle))
-            //     vertex(x, y)
-            // }
-            // for (let i = 85; i > 55; i--){
-            //     let x = radius * cos(i)
-            //     let y = radius * sin(-i)
-            //     vertex(x, y)
-            // }
-            // endShape(CLOSE)
-            // beginShape()
-            // fill(r2, g2, b2, 200)
-            // radius = random (1, 8)
-            // for(let i = 1; i < 180; i++){
-            //     let x = radius * cos(i)
-            //     let y = radius * sin(i)
-
-            //     rotate(random(maxAngle, -maxAngle))
-            //     translate(- x, -y)
-            //     vertex(x, y)
-            // }
-            // for (let i = 180; i > 1; i--){
-            //     let x = radius * cos(i)
-            //     let y = radius * sin(-i)
-            //     vertex(x, y)
-            // }
-            // endShape(CLOSE)
-
+            fill(r, g, b, 75)
+            ellipse(0, 0, 8, 25)
+            ellipse(0, 0, 25, 8)
+            rotate(45)
+            ellipse(0, 0, 8, 25)
+            ellipse(0, 0, 25, 8)
         } else {
         //branch 1
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.4)
+        branch(l * 0.5)
         pop()
         // branch 2
-        // push()
-        // rotate(random(-maxAngle, maxAngle))
-        // branch(l * 0.67)
-        // pop()
+        push()
+        rotate(random(-maxAngle, maxAngle))
+        branch(l * 0.75)
+        pop()
         //branch 3
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.8)
+        branch(l * 0.3)
         pop()
         //branch 4
         push()
         rotate(random(-maxAngle*1.75, maxAngle*1.75))
-        branch(l * 0.55)
+        branch(l * 0.67)
+        pop()
+        push()
+        rotate(random(-maxAngle, maxAngle))
+        branch(l * 0.9)
         pop()
         }
     }
