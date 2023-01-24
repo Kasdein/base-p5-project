@@ -8,19 +8,18 @@ function setup() {
     strokeWeight(1)
     noFill()
     noLoop()
-    drawCircle(width*0.5, height*0.5, width*0.25, Max_lvl)
+    drawCircle(width * 0.5, height * 0.5, width * 0.25, Max_lvl)
 }
 
 function drawCircle(x, y, dm, count) {
     ellipse(x, y, dm)
-    if(count-- > Min_lvl){
-        drawCircle(x + dm*0.5, y, dm, count)
-        drawCircle(x - dm*0.5, y, dm, count)
-        // drawCircle(x + dm*0.5, y, dm*0.5, count)
-        // drawCircle(x - dm*0.5, y, dm*0.5, count)
-        drawCircle(x, y + dm*0.5, dm*0.5, count)
-        drawCircle(x, y - dm*0.5, dm, count)
-        // drawCircle(x, y, dm*0.9, count)
+    if (count-- > Min_lvl) {
+        drawCircle(x + dm * 0.5, y, dm, count)
+        drawCircle(x - dm * 0.5, y, dm, count)
+        // drawCircle(x + dm * 0.5, y, dm * 0.5, count)
+        // drawCircle(x - dm * 0.5, y, dm * 0.5, count)
+        drawCircle(x, y + dm * 0.5, dm * 0.5, count)
+        drawCircle(x, y - dm * 0.5, dm, count)
     }
 }
 
