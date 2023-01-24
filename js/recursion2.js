@@ -6,7 +6,8 @@ let red1
 function setup() {
     createCanvas(windowWidth, windowHeight)
     angleMode(DEGREES)
-    noLoop()
+    // noLoop()
+    // frameRate(60)
 
     strokeJoin(ROUND)
 
@@ -18,14 +19,14 @@ function setup() {
     yellow2 = color(234, 189, 81)
     red1 = color(247, 113, 56)
 
-    slider = createSlider(15, 35, 25, 1)
+    slider = createSlider(10, 80, 45, 1)
     slider.position(windowWidth - 250, windowHeight - 50)
     slider.style("width", "200px")
     slider.input(draw)
 }
 
 function draw() {    
-    background(250)
+    background(0)
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(0, 44))
@@ -33,7 +34,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(0, 44))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(0, 44))
+    branch(75)
     resetMatrix()
 
     translate(width * 0.5, height * 0.5)
@@ -42,7 +47,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(45,89))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(45,89))
+    branch(75)
     resetMatrix()
 
     translate(width * 0.5, height * 0.5)
@@ -51,7 +60,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(90,134))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(90,134))
+    branch(75)
     resetMatrix()
 
     translate(width * 0.5, height * 0.5)
@@ -60,7 +73,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(135,179))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(135,179))
+    branch(75)
     resetMatrix()
 
     translate(width * 0.5, height * 0.5)
@@ -69,7 +86,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(180,224))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(180,224))
+    branch(75)
     resetMatrix()
 
     translate(width * 0.5, height * 0.5)
@@ -78,7 +99,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(225,269))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(225,269))
+    branch(75)
     resetMatrix()
     
     translate(width * 0.5, height * 0.5)
@@ -87,7 +112,11 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(270,314))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(270,314))
+    branch(75)
     resetMatrix()
 
     translate(width * 0.5, height * 0.5)
@@ -96,41 +125,56 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height * 0.5)
     rotate(random(315,359))
-    branch(250)
+    branch(150)
+    resetMatrix()
+    translate(width * 0.5, height * 0.5)
+    rotate(random(315,359))
+    branch(75)
     resetMatrix()
 }
 
 function branch(l) {
     let maxAngle = slider.value()
     strokeWeight(map(l, 10, 250, 1, 20))
-    stroke(lerpColor(yellow1, red1, random(0, 1)))
+    // stroke(lerpColor(yellow1, red1, random(0, 1)))
+    noStroke()
     line(0, 0, 0, -l)
-    translate(0, +l)
+    translate(0, -l)
     if(l > 20) {
         if(l < 55) {
             //leaves
             noStroke()
             fill(lerpColor(yellow1, red1, random(0, 1)), 75)
+            ellipse(0, 0, 2, 20)
+            ellipse(0, 0, 20, 2)
+            rotate(45)
+            ellipse(0, 0, 2, 20)
+            ellipse(0, 0, 20, 2)
         } else {
         //branch 1
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(-l * 0.7)
+        branch(l * 0.7)
         pop()
         // branch 2
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(-l * 0.1)
+        branch(l * 0.5)
         pop()
         // branch 3
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(-l * 0.9)
+        branch(l * 0.7)
         pop()
         // branch 4
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(-l * 0.3)
+        branch(l * 0.3)
+        pop()
+        // branch 5
+        push()
+        rotate(random(-maxAngle * 1.5, maxAngle * 1.5))
+        branch(l * 0.7)
         pop()
         }
     }
