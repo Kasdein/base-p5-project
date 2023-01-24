@@ -27,14 +27,47 @@ function branch(l) {
             let r = 40 + random(-20, 20)
             let g = 140 + random(-20, 20)
             let b = 40 + random(-20, 20)
-            fill(r, g, b)
-            let size = random(10, 25)
-            rotate(random(maxAngle, -maxAngle))
+            let r2 = 40 + random(-20, 20)
+            let g2 = 180 + random(-20, 20)
+            let b2 = 240 + random(-20, 20)
+            // let size = random(10, 25)
             noStroke()
             // triangle(size * 0.5, 0, -size * 0.5, 0, 0, size * 0.5)
-            triangle(- size * 0.5, 0, size*0.5, 0, 0 , -size*0.5)
-            triangle(10, - size * 0.5, 10, size*0.5, -size*0.5 , 10)
+            // triangle(- size * 0.5, 0, size*0.5, 0, 0 , -size*0.5)
+            // triangle(10, - size * 0.5, 10, size*0.5, -size*0.5 , 10)
 
+            beginShape()
+            fill(r, g, b, 200)
+            let radius = random (10, 30)
+            for(let i = 55; i < 185; i++){
+                let x = radius * cos(i)
+                let y = radius * sin(i)
+                // rotate(random(maxAngle, -maxAngle))
+                vertex(x, y)
+            }
+            for (let i = 85; i > 55; i--){
+                let x = radius * cos(i)
+                let y = radius * sin(-i)
+                vertex(x, y)
+            }
+            endShape(CLOSE)
+            beginShape()
+            fill(r2, g2, b2, 200)
+            radius = random (1, 10)
+            for(let i = 5; i < 180; i++){
+                let x = radius * cos(i)
+                let y = radius * sin(i)
+
+                rotate(random(maxAngle, -maxAngle))
+                translate(- x, -y)
+                vertex(x, y)
+            }
+            for (let i = 180; i > 5; i--){
+                let x = radius * cos(i)
+                let y = radius * sin(-i)
+                vertex(x, y)
+            }
+            endShape(CLOSE)
         } else {
         //branch 1
         push()
@@ -53,8 +86,8 @@ function branch(l) {
         pop()
         //branch 4
         push()
-        rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.3)
+        rotate(random(-maxAngle*1.75, maxAngle*1.75))
+        branch(l * 0.5)
         pop()
         }
     }
