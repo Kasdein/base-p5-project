@@ -1,6 +1,7 @@
 let brown1, brown2, slider
 let green1, green2
 let yellow1, yellow2
+let red1
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
@@ -15,8 +16,9 @@ function setup() {
     green2 = color(20, 160, 20)
     yellow1 = color(246, 231, 115)
     yellow2 = color(234, 189, 81)
+    red1 = color(247, 113, 56)
 
-    slider = createSlider(5, 25, 15, 1)
+    slider = createSlider(15, 35, 25, 1)
     slider.position(windowWidth - 250, windowHeight - 50)
     slider.style("width", "200px")
     slider.input(draw)
@@ -27,38 +29,39 @@ function draw() {
     resetMatrix()
     translate(width * 0.5, height)
     branch(250)
+    resetMatrix()
+    translate(width * 0.5, height)
+    branch(100)
 }
 
 function branch(l) {
     let maxAngle = slider.value()
     strokeWeight(map(l, 20, 250, 1, 10))
-    // stroke(lerpColor(yellow1, yellow2, random(0, 1)))
-    stroke(0, 0, 0, 0)
-    line(0,0,0,-l)
+    noStroke()
+    ellipse(0, 0, 8, 36)
+    ellipse(0, 0, 36, 8)
+    fill(lerpColor(yellow1, red1, random(0, 1)))
     translate(0, -l)
-    if(l > 10) {
-        if(l < 65) {
+    if(l > 20) {
+        if(l < 55) {
             //leaves
-            let r = random(0,255)
-            let g = random(0,255)
-            let b = random(0, 255)
             noStroke()
-            fill(r, g, b, 75)
-            ellipse(0, 0, 8, 25)
-            ellipse(0, 0, 25, 8)
+            fill(lerpColor(yellow1, red1, random(0, 1)), 75)
+            ellipse(0, 0, 4, 16)
+            ellipse(0, 0, 16, 4)
             rotate(45)
-            ellipse(0, 0, 8, 25)
-            ellipse(0, 0, 25, 8)
+            ellipse(0, 0, 4, 16)
+            ellipse(0, 0, 16, 4)
         } else {
         //branch 1
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.5)
+        branch(l * 0.4)
         pop()
         // branch 2
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.75)
+        branch(l * 0.6)
         pop()
         //branch 3
         push()
@@ -67,12 +70,23 @@ function branch(l) {
         pop()
         //branch 4
         push()
-        rotate(random(-maxAngle*1.75, maxAngle*1.75))
-        branch(l * 0.67)
+        rotate(random(-maxAngle, maxAngle))
+        branch(l * 0.5)
         pop()
+        //branch 5
+        push()
+        rotate(random(-maxAngle*1.4, maxAngle*1.4))
+        branch(l * 0.9)
+        pop()
+        //branch 6
+        push()
+        rotate(random(-maxAngle*1.6, maxAngle*1.6))
+        branch(l * 0.1)
+        pop()
+        //branch 7
         push()
         rotate(random(-maxAngle, maxAngle))
-        branch(l * 0.9)
+        branch(l * 0.2)
         pop()
         }
     }
