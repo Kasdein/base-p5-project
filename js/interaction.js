@@ -36,6 +36,8 @@ for (let i = 0; i < num; i++) {
 
 function draw() {
     // cursor 
+    background(0)
+    fill(77, 153, 250)
         variableEllipse(mouseX, mouseY, pmouseX, pmouseY)
     }
 
