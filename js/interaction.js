@@ -4,7 +4,6 @@ let r
 let theta = 0
 let inc = 0.12
 let offset = 0 //the ammount offset from beginning of wave
-let amplitude
 let frequency
 let maxAngle
 
@@ -37,24 +36,24 @@ function draw() {
     // cursor 
     background(0)
 
-        variableEllipse(mouseX, mouseY, pmouseX, pmouseY)
+        variableEllipse(mouseX, mouseY, mouseX, mouseY)
     }
 
 
-function variableEllipse(x, y, px, py) {
+function variableEllipse(x, y, x2, y2) {
     let length = 5
     while(theta < maxAngle + offset) {
             for (i = length; i > 0; i --){
                 r = height * 0.08
                 x = mouseX + (r * cos(theta))
                 y = mouseY + (r * sin(theta))
-                px = mouseX + (r * sin(theta))
-                py = mouseY + (r * cos(theta))
+                x2 = mouseX + (r * sin(theta))
+                y2 = mouseY + (r * cos(theta))
                 let which = frameCount % num
-                mx[which] = px 
-                my[which] = py
-                mx2[which] = x
-                my2[which] = y
+                mx[which] = x 
+                my[which] = y
+                mx2[which] = x2
+                my2[which] = y2
                 for (let i = 0; i < num; i++) {
                 // which+1 is the smallest (the oldest in the array)        
                 let index = (which + 1 + i) % num
